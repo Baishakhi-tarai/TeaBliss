@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>5th International Conference | IMASS 2026</title>
+
+    <meta name="description"
+          content="5th International Conference on Multidisciplinary Approach for Sustainable Society, Bali, Indonesia, December 19-20, 2026.">
+
+    <style>
+        /* =========================
+           GLOBAL STYLES
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ed684d;
+            --secondary: #ff9a65;
+            --dark: #172027;
+            --white: #ffffff;
+            --light: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--dark);
+            background: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            width: 100%;
+            min-height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 15px 5%;
+
+            background: linear-gradient(
+                100deg,
+                #ed8d79,
+                #f16b50
+            );
+
+            color: white;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: 10px 0;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffe4b9;
+        }
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+
+            width: 100%;
+            height: 2px;
+
+            background: white;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            padding: 13px 17px;
+
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.35);
+
+            color: white;
+            background: rgba(255,255,255,0.13);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            color: white;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 8px;
+
+            font-size: 24px;
+        }
+
+        /* =========================
+           ANNOUNCEMENT BAR
+        ========================= */
+
+        .announcement {
+            display: flex;
+            align-items: center;
+
+            height: 34px;
+            overflow: hidden;
+
+            background: #f8b49d;
+            color: #733e31;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .announcement-label {
+            flex-shrink: 0;
+            padding: 0 15px;
+
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            background: #e9664c;
+            color: white;
+        }
+
+        .ticker {
+            overflow: hidden;
+            white-space: nowrap;
+            flex: 1;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            padding-left: 100%;
+
+            animation: ticker 28s linear infinite;
+        }
+
+        .ticker:hover .ticker-content {
+            animation-play-state: paused;
+        }
+
+        .ticker-content span {
+            margin-right: 55px;
+        }
+
+        @keyframes ticker {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            position: relative;
+
+            min-height: 570px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 75px 20px;
+
+            overflow: hidden;
+
+            color: white;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(16, 20, 25, 0.82),
+                    rgba(16, 20, 25, 0.60),
+                    rgba(16, 20, 25, 0.55)
+                ),
+                url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 1050px;
+
+            animation: fadeIn 1s ease;
+        }
+
+        .eyebrow {
+            margin-bottom: 20px;
+
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin-bottom: 22px;
+
+            font-size: clamp(35px, 5vw, 58px);
+            line-height: 1.2;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            display: block;
+            margin-top: 10px;
+            color: #ffe6bf;
+        }
+
+        .hero-description {
+            max-width: 700px;
+
+            margin: 0 auto 30px;
+
+            color: #f1f1f1;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           CONFERENCE DETAILS
+        ========================= */
+
+        .event-details {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+
+            margin-bottom: 35px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .detail-icon {
+            font-size: 21px;
+            color: #ffba7a;
+        }
+
+        /* =========================
+           HERO BUTTONS
+        ========================= */
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            min-width: 235px;
+            padding: 17px 25px;
+
+            border: 1px solid transparent;
+            border-radius: 13px;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #59616a;
+        }
+
+        .btn-primary:hover {
+            background: #ffe3c8;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            color: white;
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.55);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #222;
+            transform: translateY(-4px);
+        }
+
+        /* =========================
+           FLOATING CONTACT BUTTONS
+        ========================= */
+
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 110px;
+            z-index: 900;
+
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .float-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 48px;
+            height: 48px;
+
+            border-radius: 50%;
+
+            color: white;
+            font-size: 23px;
+
+            box-shadow: 0 5px 18px rgba(0,0,0,0.2);
+
+            transition: transform 0.3s;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.12);
+        }
+
+        .whatsapp {
+            background: #20c979;
+        }
+
+        .messenger {
+            background: #087cff;
+        }
+
+        /* =========================
+           CHAT WIDGET
+        ========================= */
+
+        .chat-widget {
+            position: fixed;
+            right: 20px;
+            bottom: 25px;
+            z-index: 900;
+        }
+
+        .chat-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px 16px;
+
+            border: none;
+            border-radius: 30px;
+
+            background: white;
+            color: #252525;
+
+            box-shadow: 0 5px 22px rgba(0,0,0,0.18);
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .chat-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 35px;
+            height: 35px;
+
+            border-radius: 50%;
+            background: #f36d4c;
+            color: white;
+
+            font-size: 20px;
+        }
+
+        .chat-popup {
+            display: none;
+
+            position: absolute;
+            right: 0;
+            bottom: 60px;
+
+            width: 290px;
+            padding: 20px;
+
+            border-radius: 14px;
+            background: white;
+            color: #222;
+
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+        }
+
+        .chat-popup.open {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .chat-popup h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .chat-popup p {
+            margin-bottom: 15px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .chat-popup a {
+            display: block;
+            padding: 11px;
+
+            background: var(--primary);
+            color: white;
+
+            border-radius: 8px;
+            text-align: center;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           ABOUT SECTION
+        ========================= */
+
+        .section {
+            padding: 85px 7%;
+        }
+
+        .section-heading {
+            max-width: 750px;
+            margin: 0 auto 45px;
+            text-align: center;
+        }
+
+        .section-heading .tag {
+            display: inline-block;
+            margin-bottom: 12px;
+
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 18px;
+            font-size: clamp(28px, 4vw, 40px);
+        }
+
+        .section-heading p {
+            color: #6a7179;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .feature-card {
+            padding: 30px;
+
+            border: 1px solid #eeeeee;
+            border-radius: 16px;
+
+            background: #ffffff;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.09);
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 55px;
+            height: 55px;
+
+            margin-bottom: 20px;
+
+            border-radius: 14px;
+            background: #fff0e9;
+
+            font-size: 27px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+            font-size: 19px;
+        }
+
+        .feature-card p {
+            color: #6a7179;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           REGISTRATION SECTION
+        ========================= */
+
+        .registration-section {
+            padding: 70px 20px;
+
+            text-align: center;
+            color: white;
+
+            background: linear-gradient(
+                120deg,
+                #e96c50,
+                #f59a69
+            );
+        }
+
+        .registration-section h2 {
+            margin-bottom: 15px;
+            font-size: clamp(28px, 4vw, 38px);
+        }
+
+        .registration-section p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .registration-section .btn {
+            background: white;
+            color: #e96c50;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 7%;
+
+            color: #dddddd;
+            background: #182127;
+
+            text-align: center;
+        }
+
+        footer h3 {
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+            color: #aaaaaa;
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           TABLET RESPONSIVENESS
+        ========================= */
+
+        @media (max-width: 1100px) {
+            .navbar {
+                padding: 15px 3%;
+            }
+
+            .nav-links {
+                gap: 17px;
+            }
+
+            .nav-actions {
+                gap: 6px;
+            }
+
+            .nav-btn {
+                padding: 11px 12px;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+        }
+
+        /* =========================
+           MOBILE RESPONSIVENESS
+        ========================= */
+
+        @media (max-width: 850px) {
+            .navbar {
+                flex-wrap: wrap;
+                min-height: 72px;
+            }
+
+            .menu-toggle {
+                display: block;
+                margin-left: auto;
+            }
+
+            .nav-links {
+                display: none;
+
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+
+                padding: 12px 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 14px 8px;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .nav-actions {
+                display: none;
+                width: 100%;
+                padding: 10px 0;
+            }
+
+            .nav-actions.open {
+                display: flex;
+            }
+
+            .nav-actions .nav-btn {
+                flex: 1;
+            }
+
+            .hero {
+                min-height: 590px;
+                padding: 65px 20px;
+            }
+
+            .hero h1 {
+                font-size: clamp(32px, 7vw, 46px);
+            }
+
+            .event-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 550px) {
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo-icon {
+                font-size: 25px;
+            }
+
+            .announcement {
+                height: 32px;
+                font-size: 10px;
+            }
+
+            .announcement-label {
+                padding: 0 9px;
+            }
+
+            .hero {
+                min-height: 610px;
+                padding: 55px 18px;
+            }
+
+            .eyebrow {
+                font-size: 11px;
+                line-height: 1.7;
+                letter-spacing: 1px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+                letter-spacing: -0.8px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+            .detail-item {
+                font-size: 12px;
+                text-align: left;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                min-width: 0;
+                padding: 16px 15px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .feature-card {
+                padding: 25px;
+            }
+
+            .floating-buttons {
+                right: 12px;
+                bottom: 100px;
+            }
+
+            .float-btn {
+                width: 43px;
+                height: 43px;
+            }
+
+            .chat-widget {
+                right: 12px;
+                bottom: 18px;
+            }
+
+            .chat-popup {
+                width: min(290px, calc(100vw - 24px));
+            }
+        }
+
+        /* Accessibility */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header class="navbar">
+
+        <a href="#home" class="logo" aria-label="IMASS Home">
+            <span class="logo-icon">🌐</span>
+            <span>BAISAKHI</span>
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="navLinks"
+        >
+            ☰
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="#home" class="active">Home</a>
+
+            <a href="#about">About</a>
+
+            <a href="#publication">Publication</a>
+
+            <a href="#downloads">Downloads</a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+        <div class="nav-actions" id="navActions">
+
+            <a href="#registration" class="nav-btn">
+                📝 Registration
+            </a>
+
+            <a href="#submission" class="nav-btn">
+                📄 Submission
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         ANNOUNCEMENTS
+    ========================== -->
+
+    <div class="announcement">
+
+        <div class="announcement-label">
+            NEWS
+        </div>
+
+        <div class="ticker">
+
+            <div class="ticker-content">
+
+                <span>
+                    📢 Abstract submission is open for IMASS 2026.
+                </span>
+
+                <span>
+                    🌍 Join the 5th International Conference in Bali, Indonesia.
+                </span>
+
+                <span>
+                    📅 Conference dates: December 19–20, 2026.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    5th International Conference on
+                </p>
+
+                <h1>
+                    Multidisciplinary Approach
+                    <span>for Sustainable Society</span>
+                </h1>
+
+                <p class="hero-description">
+                    Advancing sustainability through innovative research,
+                    cross-disciplinary collaboration, and solutions for
+                    global environmental challenges.
+                </p>
+
+                <div class="event-details">
+
+                    <div class="detail-item">
+
+                        <span class="detail-icon">▣</span>
+
+                        <span>Hybrid Conference</span>
+
+                    </div>
+
+                    <div class="detail-item">
+
+                        <span class="detail-icon">📍</span>
+
+                        <span>
+                            The Kuta Beach Heritage Hotel,
+                            Bali, Indonesia
+                        </span>
+
+                    </div>
+
+                    <div class="detail-item">
+
+                        <span class="detail-icon">▦</span>
+
+                        <span>
+                            December 19th – 20th, 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-buttons">
+
+                    <a href="#submission" class="btn btn-primary">
+
+                        Submit Your Abstract
+
+                        <span>→</span>
+
+                    </a>
+
+                    <a href="#registration" class="btn btn-secondary">
+
+                        Registration Options
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT CONFERENCE
+        ========================== -->
+
+        <section class="section" id="about">
+
+            <div class="section-heading">
+
+                <span class="tag">
+                    About the Conference
+                </span>
+
+                <h2>
+                    Research Today, Sustainable Tomorrow
+                </h2>
+
+                <p>
+                    Bring together researchers, educators, professionals,
+                    and students to exchange ideas and develop practical
+                    solutions for a more sustainable society.
+                </p>
+
+            </div>
+
+            <div class="features">
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        🌱
+                    </div>
+
+                    <h3>
+                        Sustainability
+                    </h3>
+
+                    <p>
+                        Explore innovative approaches to environmental
+                        protection, climate challenges, and sustainable
+                        development.
+                    </p>
+
+                </article>
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        🔬
+                    </div>
+
+                    <h3>
+                        Research & Innovation
+                    </h3>
+
+                    <p>
+                        Present research findings, exchange knowledge,
+                        and discover emerging ideas across disciplines.
+                    </p>
+
+                </article>
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        🌍
+                    </div>
+
+                    <h3>
+                        Global Collaboration
+                    </h3>
+
+                    <p>
+                        Connect with researchers and professionals
+                        working toward solutions to global challenges.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PUBLICATION
+        ========================== -->
+
+        <section class="section" id="publication"
+                 style="background: #f8f8f8;">
+
+            <div class="section-heading">
+
+                <span class="tag">
+                    Publication
+                </span>
+
+                <h2>
+                    Share Your Research
+                </h2>
+
+                <p>
+                    Present your academic work and review the official
+                    conference publication guidelines before submitting
+                    your research paper.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DOWNLOADS
+        ========================== -->
+
+        <section class="section" id="downloads">
+
+            <div class="section-heading">
+
+                <span class="tag">
+                    Resources
+                </span>
+
+                <h2>
+                    Conference Downloads
+                </h2>
+
+                <p>
+                    Access conference guidelines, abstract templates,
+                    important dates, and other official documents
+                    when they are made available.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             REGISTRATION
+        ========================== -->
+
+        <section class="registration-section"
+                 id="registration">
+
+            <h2>
+                Be Part of IMASS 2026
+            </h2>
+
+            <p>
+                Connect, collaborate, and contribute to a sustainable future.
+            </p>
+
+            <a href="#contact" class="btn">
+                Registration Information →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             SUBMISSION
+        ========================== -->
+
+        <section class="section" id="submission">
+
+            <div class="section-heading">
+
+                <span class="tag">
+                    Abstract Submission
+                </span>
+
+                <h2>
+                    Submit Your Abstract
+                </h2>
+
+                <p>
+                    Prepare your abstract according to the official
+                    submission guidelines. Replace this section's
+                    button destination with the conference's actual
+                    submission portal.
+                </p>
+
+                <br>
+
+                <a href="#contact"
+                   class="btn btn-primary"
+                   style="
+                       background: #ed684d;
+                       color: white;
+                   ">
+
+                    Submission Information →
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FLOATING CONTACT BUTTONS
+    ========================== -->
+
+    <div class="floating-buttons">
+
+        <!-- Replace the number with the official WhatsApp number.
+             Include country code without + or spaces. -->
+
+        <a
+            href="https://wa.me/0000000000"
+            class="float-btn whatsapp"
+            aria-label="Contact on WhatsApp"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            ☎
+        </a>
+
+        <a
+            href="https://m.me/"
+            class="float-btn messenger"
+            aria-label="Open Messenger"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <span>●</span>
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         CHAT WIDGET
+    ========================== -->
+
+    <div class="chat-widget">
+
+        <div class="chat-popup" id="chatPopup">
+
+            <h3>
+                We're Here to Help
+            </h3>
+
+            <p>
+                Have questions about registration or abstract submission?
+                Contact the conference organizers.
+            </p>
+
+            <a href="#contact" id="contactLink">
+                Contact Organizers
+            </a>
+
+        </div>
+
+        <button
+            class="chat-button"
+            id="chatButton"
+            aria-expanded="false"
+            aria-controls="chatPopup"
+        >
+
+            <span>We Are Here</span>
+
+            <span class="chat-icon">●</span>
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer id="contact">
+
+        <h3>IMASS 2026</h3>
+
+        <p>
+            5th International Conference on
+            Multidisciplinary Approach for Sustainable Society
+        </p>
+
+        <p>
+            December 19–20, 2026 | Bali, Indonesia
+        </p>
+
+        <p>
+            For official registration, submission, and contact details,
+            visit the conference organizer's official website.
+        </p>
+
+        <p class="copyright">
+            © <span id="year">2026</span> IMASS Conference.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // MOBILE NAVIGATION
+
+        const menuToggle = document.getElementById("menuToggle");
+
+        const navLinks = document.getElementById("navLinks");
+
+        const navActions = document.getElementById("navActions");
+
+
+        menuToggle.addEventListener("click", function () {
+
+            const isOpen = navLinks.classList.toggle("open");
+
+            navActions.classList.toggle("open", isOpen);
+
+            menuToggle.setAttribute("aria-expanded", isOpen);
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+        });
+
+
+        // CLOSE MOBILE MENU WHEN A LINK IS CLICKED
+
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("open");
+
+                navActions.classList.remove("open");
+
+                menuToggle.setAttribute("aria-expanded", "false");
+
+                menuToggle.textContent = "☰";
+
+            });
+
+        });
+
+
+        // ACTIVE NAVIGATION LINK
+
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                document.querySelectorAll(".nav-links a")
+                    .forEach(function (item) {
+
+                        item.classList.remove("active");
+
+                    });
+
+                link.classList.add("active");
+
+            });
+
+        });
+
+
+        // CHAT POPUP
+
+        const chatButton = document.getElementById("chatButton");
+
+        const chatPopup = document.getElementById("chatPopup");
+
+
+        chatButton.addEventListener("click", function () {
+
+            const isOpen = chatPopup.classList.toggle("open");
+
+            chatButton.setAttribute("aria-expanded", isOpen);
+
+        });
+
+
+        // CLOSE CHAT WHEN CONTACT IS SELECTED
+
+        document.getElementById("contactLink")
+            .addEventListener("click", function () {
+
+                chatPopup.classList.remove("open");
+
+                chatButton.setAttribute("aria-expanded", "false");
+
+            });
+
+
+        // CLOSE CHAT WHEN CLICKING OUTSIDE
+
+        document.addEventListener("click", function (event) {
+
+            const clickedInsideChat =
+                chatButton.contains(event.target) ||
+                chatPopup.contains(event.target);
+
+            if (!clickedInsideChat) {
+
+                chatPopup.classList.remove("open");
+
+                chatButton.setAttribute("aria-expanded", "false");
+
+            }
+
+        });
+
+
+        // AUTOMATIC COPYRIGHT YEAR
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        // CONSOLE MESSAGE
+
+        console.log(
+            "IMASS 2026 Conference Website Loaded Successfully."
+        );
+
+    </script>
+
+</body>
+</html>
