@@ -1,1493 +1,931 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>5th International Conference | IMASS 2026</title>
-
-    <meta name="description"
-          content="5th International Conference on Multidisciplinary Approach for Sustainable Society, Bali, Indonesia, December 19-20, 2026.">
-
-    <style>
-        /* =========================
-           GLOBAL STYLES
-        ========================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #ed684d;
-            --secondary: #ff9a65;
-            --dark: #172027;
-            --white: #ffffff;
-            --light: #f5f5f5;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--dark);
-            background: #ffffff;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button {
-            font: inherit;
-            cursor: pointer;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            width: 100%;
-            min-height: 82px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 15px 5%;
-
-            background: linear-gradient(
-                100deg,
-                #ed8d79,
-                #f16b50
-            );
-
-            color: white;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .logo-icon {
-            font-size: 32px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            position: relative;
-            padding: 10px 0;
-
-            font-size: 14px;
-            font-weight: 600;
-
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ffe4b9;
-        }
-
-        .nav-links a.active::after {
-            content: "";
-
-            position: absolute;
-            left: 0;
-            bottom: 2px;
-
-            width: 100%;
-            height: 2px;
-
-            background: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-
-            padding: 13px 17px;
-
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.35);
-
-            color: white;
-            background: rgba(255,255,255,0.13);
-
-            font-size: 12px;
-            font-weight: 700;
-
-            transition: 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .menu-toggle {
-            display: none;
-
-            width: 42px;
-            height: 42px;
-
-            color: white;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.5);
-            border-radius: 8px;
-
-            font-size: 24px;
-        }
-
-        /* =========================
-           ANNOUNCEMENT BAR
-        ========================= */
-
-        .announcement {
-            display: flex;
-            align-items: center;
-
-            height: 34px;
-            overflow: hidden;
-
-            background: #f8b49d;
-            color: #733e31;
-
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .announcement-label {
-            flex-shrink: 0;
-            padding: 0 15px;
-
-            height: 100%;
-            display: flex;
-            align-items: center;
-
-            background: #e9664c;
-            color: white;
-        }
-
-        .ticker {
-            overflow: hidden;
-            white-space: nowrap;
-            flex: 1;
-        }
-
-        .ticker-content {
-            display: inline-block;
-            padding-left: 100%;
-
-            animation: ticker 28s linear infinite;
-        }
-
-        .ticker:hover .ticker-content {
-            animation-play-state: paused;
-        }
-
-        .ticker-content span {
-            margin-right: 55px;
-        }
-
-        @keyframes ticker {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* =========================
-           HERO SECTION
-        ========================= */
-
-        .hero {
-            position: relative;
-
-            min-height: 570px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 75px 20px;
-
-            overflow: hidden;
-
-            color: white;
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(16, 20, 25, 0.82),
-                    rgba(16, 20, 25, 0.60),
-                    rgba(16, 20, 25, 0.55)
-                ),
-                url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=2000&q=85")
-                center/cover no-repeat;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-
-            width: 100%;
-            max-width: 1050px;
-
-            animation: fadeIn 1s ease;
-        }
-
-        .eyebrow {
-            margin-bottom: 20px;
-
-            font-size: 14px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            margin-bottom: 22px;
-
-            font-size: clamp(35px, 5vw, 58px);
-            line-height: 1.2;
-            font-weight: 900;
-            letter-spacing: -1.5px;
-        }
-
-        .hero h1 span {
-            display: block;
-            margin-top: 10px;
-            color: #ffe6bf;
-        }
-
-        .hero-description {
-            max-width: 700px;
-
-            margin: 0 auto 30px;
-
-            color: #f1f1f1;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        /* =========================
-           CONFERENCE DETAILS
-        ========================= */
-
-        .event-details {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-
-            margin-bottom: 35px;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .detail-icon {
-            font-size: 21px;
-            color: #ffba7a;
-        }
-
-        /* =========================
-           HERO BUTTONS
-        ========================= */
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-
-            min-width: 235px;
-            padding: 17px 25px;
-
-            border: 1px solid transparent;
-            border-radius: 13px;
-
-            font-size: 14px;
-            font-weight: 800;
-
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: #ffffff;
-            color: #59616a;
-        }
-
-        .btn-primary:hover {
-            background: #ffe3c8;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            color: white;
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.55);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #222;
-            transform: translateY(-4px);
-        }
-
-        /* =========================
-           FLOATING CONTACT BUTTONS
-        ========================= */
-
-        .floating-buttons {
-            position: fixed;
-            right: 20px;
-            bottom: 110px;
-            z-index: 900;
-
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .float-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 48px;
-            height: 48px;
-
-            border-radius: 50%;
-
-            color: white;
-            font-size: 23px;
-
-            box-shadow: 0 5px 18px rgba(0,0,0,0.2);
-
-            transition: transform 0.3s;
-        }
-
-        .float-btn:hover {
-            transform: scale(1.12);
-        }
-
-        .whatsapp {
-            background: #20c979;
-        }
-
-        .messenger {
-            background: #087cff;
-        }
-
-        /* =========================
-           CHAT WIDGET
-        ========================= */
-
-        .chat-widget {
-            position: fixed;
-            right: 20px;
-            bottom: 25px;
-            z-index: 900;
-        }
-
-        .chat-button {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            padding: 12px 16px;
-
-            border: none;
-            border-radius: 30px;
-
-            background: white;
-            color: #252525;
-
-            box-shadow: 0 5px 22px rgba(0,0,0,0.18);
-
-            font-size: 13px;
-            font-weight: 800;
-        }
-
-        .chat-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 35px;
-            height: 35px;
-
-            border-radius: 50%;
-            background: #f36d4c;
-            color: white;
-
-            font-size: 20px;
-        }
-
-        .chat-popup {
-            display: none;
-
-            position: absolute;
-            right: 0;
-            bottom: 60px;
-
-            width: 290px;
-            padding: 20px;
-
-            border-radius: 14px;
-            background: white;
-            color: #222;
-
-            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
-        }
-
-        .chat-popup.open {
-            display: block;
-            animation: fadeIn 0.25s ease;
-        }
-
-        .chat-popup h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .chat-popup p {
-            margin-bottom: 15px;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .chat-popup a {
-            display: block;
-            padding: 11px;
-
-            background: var(--primary);
-            color: white;
-
-            border-radius: 8px;
-            text-align: center;
-
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           ABOUT SECTION
-        ========================= */
-
-        .section {
-            padding: 85px 7%;
-        }
-
-        .section-heading {
-            max-width: 750px;
-            margin: 0 auto 45px;
-            text-align: center;
-        }
-
-        .section-heading .tag {
-            display: inline-block;
-            margin-bottom: 12px;
-
-            color: var(--primary);
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .section-heading h2 {
-            margin-bottom: 18px;
-            font-size: clamp(28px, 4vw, 40px);
-        }
-
-        .section-heading p {
-            color: #6a7179;
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 25px;
-
-            max-width: 1150px;
-            margin: auto;
-        }
-
-        .feature-card {
-            padding: 30px;
-
-            border: 1px solid #eeeeee;
-            border-radius: 16px;
-
-            background: #ffffff;
-
-            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
-
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.09);
-        }
-
-        .feature-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 55px;
-            height: 55px;
-
-            margin-bottom: 20px;
-
-            border-radius: 14px;
-            background: #fff0e9;
-
-            font-size: 27px;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 12px;
-            font-size: 19px;
-        }
-
-        .feature-card p {
-            color: #6a7179;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        /* =========================
-           REGISTRATION SECTION
-        ========================= */
-
-        .registration-section {
-            padding: 70px 20px;
-
-            text-align: center;
-            color: white;
-
-            background: linear-gradient(
-                120deg,
-                #e96c50,
-                #f59a69
-            );
-        }
-
-        .registration-section h2 {
-            margin-bottom: 15px;
-            font-size: clamp(28px, 4vw, 38px);
-        }
-
-        .registration-section p {
-            margin-bottom: 25px;
-            line-height: 1.8;
-        }
-
-        .registration-section .btn {
-            background: white;
-            color: #e96c50;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 35px 7%;
-
-            color: #dddddd;
-            background: #182127;
-
-            text-align: center;
-        }
-
-        footer h3 {
-            margin-bottom: 12px;
-            color: white;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        footer .copyright {
-            margin-top: 20px;
-            color: #aaaaaa;
-        }
-
-        /* =========================
-           ANIMATIONS
-        ========================= */
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* =========================
-           TABLET RESPONSIVENESS
-        ========================= */
-
-        @media (max-width: 1100px) {
-            .navbar {
-                padding: 15px 3%;
-            }
-
-            .nav-links {
-                gap: 17px;
-            }
-
-            .nav-actions {
-                gap: 6px;
-            }
-
-            .nav-btn {
-                padding: 11px 12px;
-            }
-
-            .logo {
-                font-size: 23px;
-            }
-        }
-
-        /* =========================
-           MOBILE RESPONSIVENESS
-        ========================= */
-
-        @media (max-width: 850px) {
-            .navbar {
-                flex-wrap: wrap;
-                min-height: 72px;
-            }
-
-            .menu-toggle {
-                display: block;
-                margin-left: auto;
-            }
-
-            .nav-links {
-                display: none;
-
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-
-                padding: 12px 0;
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 14px 8px;
-                border-bottom: 1px solid rgba(255,255,255,0.2);
-            }
-
-            .nav-links a.active::after {
-                display: none;
-            }
-
-            .nav-actions {
-                display: none;
-                width: 100%;
-                padding: 10px 0;
-            }
-
-            .nav-actions.open {
-                display: flex;
-            }
-
-            .nav-actions .nav-btn {
-                flex: 1;
-            }
-
-            .hero {
-                min-height: 590px;
-                padding: 65px 20px;
-            }
-
-            .hero h1 {
-                font-size: clamp(32px, 7vw, 46px);
-            }
-
-            .event-details {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .features {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 550px) {
-            .logo {
-                font-size: 21px;
-            }
-
-            .logo-icon {
-                font-size: 25px;
-            }
-
-            .announcement {
-                height: 32px;
-                font-size: 10px;
-            }
-
-            .announcement-label {
-                padding: 0 9px;
-            }
-
-            .hero {
-                min-height: 610px;
-                padding: 55px 18px;
-            }
-
-            .eyebrow {
-                font-size: 11px;
-                line-height: 1.7;
-                letter-spacing: 1px;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-                letter-spacing: -0.8px;
-            }
-
-            .hero-description {
-                font-size: 14px;
-                line-height: 1.8;
-            }
-
-            .detail-item {
-                font-size: 12px;
-                text-align: left;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                width: 100%;
-                min-width: 0;
-                padding: 16px 15px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
-
-            .feature-card {
-                padding: 25px;
-            }
-
-            .floating-buttons {
-                right: 12px;
-                bottom: 100px;
-            }
-
-            .float-btn {
-                width: 43px;
-                height: 43px;
-            }
-
-            .chat-widget {
-                right: 12px;
-                bottom: 18px;
-            }
-
-            .chat-popup {
-                width: min(290px, calc(100vw - 24px));
-            }
-        }
-
-        /* Accessibility */
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#063c29">
+<title>Tea Bliss | Good Tea, Good Mood</title>
+<style>
+:root {
+  --green: #063c29;
+  --green2: #0b5638;
+  --gold: #ffb938;
+  --cream: #faf9f3;
+  --pale: #eef3e5;
+  --text: #20251f;
+  --muted: #62675f;
+  --shadow: 0 5px 22px #153b1710;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  margin: 0; font-family: Arial, Helvetica, sans-serif;
+  color: var(--text); background: var(--cream); line-height: 1.55;
+}
+button, input, textarea, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.container { width: min(1200px, 92%); margin: auto; }
+header {
+  position: sticky; top: 0; z-index: 20; background: var(--green);
+  color: white; box-shadow: 0 2px 10px #0002;
+}
+.nav {
+  min-height: 68px; display: flex; align-items: center;
+  justify-content: space-between; gap: 20px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-family: Georgia,serif; }
+.brand-icon { font-size: 35px; line-height: 1; }
+.brand strong { display: block; font-size: 25px; line-height: 1.1; }
+.brand small { display: block; font: 12px Arial,sans-serif; letter-spacing: .4px; }
+.nav-links { display: flex; align-items: center; gap: 35px; }
+.nav-links a { padding: 8px 0; border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); border-color: var(--gold); }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.cart-trigger, .menu-toggle {
+  border: 0; background: transparent; color: white; font-size: 25px;
+  position: relative; padding: 8px;
+}
+.cart-count {
+  position: absolute; right: -1px; top: 0; min-width: 19px; height: 19px;
+  border-radius: 50%; background: var(--gold); color: #142218;
+  font-size: 11px; font-weight: bold; display: grid; place-items: center;
+}
+.menu-toggle { display: none; }
+.hero {
+  color: white; min-height: 295px; display: flex; align-items: center;
+  background: linear-gradient(90deg,#160f07d9 0%,#160f0790 43%,#160f0710 100%),
+    url('https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=2000&q=85') center 54%/cover;
+}
+.hero-content { padding: 34px 0; max-width: 510px; }
+.eyebrow { letter-spacing: 3px; font-size: 13px; color: #ffdf9b; font-weight: bold; }
+h1,h2,h3 { font-family: Georgia,'Times New Roman',serif; }
+.hero h1 { font-size: clamp(35px,4.2vw,49px); line-height: 1.03; margin: 8px 0 12px; }
+.hero p { max-width: 400px; margin: 0 0 17px; font-size: 17px; }
+.btn {
+  border: 0; border-radius: 30px; padding: 11px 24px;
+  background: var(--gold); color: #171a12; font-weight: bold;
+  display: inline-flex; justify-content: center; align-items: center;
+  gap: 9px; transition: transform .18s, filter .18s;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.04); }
+.btn-green { background: var(--green2); color: white; }
+.btn-outline { border: 1px solid var(--green2); background: transparent; color: var(--green2); }
+.benefits { background: var(--pale); }
+.benefit-grid { display: grid; grid-template-columns: repeat(4,1fr); padding: 16px 0; }
+.benefit {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  border-right: 1px solid #d7ddce; padding: 0 10px;
+}
+.benefit:last-child { border: 0; }
+.benefit-icon { font-size: 29px; color: var(--green2); }
+.benefit strong { display: block; font-size: 13px; }
+.benefit small { display: block; font-size: 11px; color: var(--muted); }
+.section { padding: 30px 0; }
+.section-heading { text-align: center; margin: 0 auto 17px; }
+.section-heading h2 { color: var(--green); font-size: 29px; margin: 0 0 5px; }
+.section-heading p { margin: 8px 0 0; }
+.leaf-divider { color: var(--green2); }
+.toolbar {
+  display: flex; justify-content: space-between; gap: 12px;
+  align-items: center; flex-wrap: wrap; margin: 20px 0 18px;
+}
+.search-box { flex: 1; min-width: 190px; max-width: 400px; }
+input, textarea, select {
+  border: 1px solid #d8ddd2; background: white; border-radius: 9px;
+  padding: 11px 13px; width: 100%; outline: none; color: var(--text);
+}
+input:focus, textarea:focus, select:focus { border-color: var(--green2); box-shadow: 0 0 0 3px #0b563817; }
+.filters { display: flex; gap: 7px; flex-wrap: wrap; }
+.filter-btn {
+  border: 1px solid #d6ddd1; background: white; padding: 8px 14px;
+  border-radius: 22px; color: var(--green); font-size: 13px;
+}
+.filter-btn.selected { background: var(--green); color: white; border-color: var(--green); }
+.product-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; }
+.product-card {
+  background: white; border: 1px solid #efeee7; border-radius: 10px;
+  overflow: hidden; box-shadow: var(--shadow); text-align: center;
+  display: flex; flex-direction: column; transition: transform .2s;
+}
+.product-card:hover { transform: translateY(-3px); }
+.product-image { width: 100%; height: 145px; object-fit: cover; background: #e5e6d7; }
+.product-body { padding: 9px 12px 13px; display: flex; flex-direction: column; align-items: center; flex: 1; }
+.product-body h3 { font: bold 16px Arial,sans-serif; margin: 0 0 2px; }
+.product-body p { font-size: 12px; margin: 0 0 4px; color: #555b53; }
+.price { font-weight: bold; color: var(--green); margin-bottom: 8px; }
+.product-body .btn { width: min(170px,100%); padding: 7px 15px; font-size: 12px; margin-top: auto; }
+.no-results { text-align: center; padding: 35px; color: var(--muted); grid-column: 1/-1; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+.about-img { width: 100%; height: 230px; object-fit: cover; border-radius: 9px; }
+.about-copy h2, .reviews h2 { color: var(--green); margin: 0 0 8px; font-size: 25px; }
+.about-copy p { font-size: 13px; margin: 0 0 12px; }
+.reviews { background: var(--pale); padding: 18px; border-radius: 10px; }
+.review-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.review {
+  background: white; padding: 13px; border-radius: 8px;
+  font-size: 12px; box-shadow: 0 3px 12px #00000008;
+}
+.review p { margin: 0 0 8px; }
+.review strong { font-size: 12px; }
+.stars { color: #f5ab23; letter-spacing: 1px; }
+.contact-section { background: #f0f4e9; }
+.contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 35px; }
+.contact-form { display: grid; gap: 12px; }
+.contact-form textarea { min-height: 110px; resize: vertical; }
+.field-label { font-size: 13px; font-weight: bold; display: grid; gap: 5px; }
+footer { background: var(--green); color: white; padding: 20px 0; }
+.footer-row { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.footer-links { display: flex; gap: 22px; font-size: 13px; }
+.footer-links a:hover { color: var(--gold); }
+.socials { display: flex; gap: 10px; }
+.socials a { background: white; color: var(--green); width: 25px; height: 25px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: bold; }
+.copyright { text-align: center; font-size: 11px; margin-top: 12px; color: #d8e7db; }
+
+/* Cart and checkout */
+.overlay {
+  position: fixed; inset: 0; background: #0007; z-index: 40;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.overlay.open { opacity: 1; pointer-events: auto; }
+.cart-drawer {
+  position: fixed; z-index: 41; top: 0; right: 0; height: 100dvh;
+  width: min(430px,100%); background: var(--cream);
+  transform: translateX(105%); transition: transform .25s;
+  display: flex; flex-direction: column; box-shadow: -5px 0 30px #0002;
+}
+.cart-drawer.open { transform: translateX(0); }
+.drawer-head { background: var(--green); color: white; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; }
+.drawer-head h2 { margin: 0; font-size: 23px; }
+.close-btn { background: transparent; border: 0; color: inherit; font-size: 27px; }
+.cart-items { padding: 12px 18px; overflow-y: auto; flex: 1; }
+.cart-item { display: grid; grid-template-columns: 70px 1fr auto; gap: 12px; padding: 13px 0; border-bottom: 1px solid #e4e6dc; align-items: center; }
+.cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; }
+.cart-item h3 { font: bold 14px Arial,sans-serif; margin: 0 0 4px; }
+.cart-item p { margin: 0; color: var(--green2); font-weight: bold; font-size: 13px; }
+.qty-controls { display: flex; align-items: center; gap: 9px; margin-top: 7px; }
+.qty-controls button { border: 1px solid #d8ded2; background: white; border-radius: 5px; width: 26px; height: 26px; }
+.remove-item { border: 0; background: transparent; color: #a32d2d; padding: 4px; }
+.cart-foot { padding: 17px 20px; border-top: 1px solid #e1e3d9; background: white; }
+.total-row { display: flex; justify-content: space-between; margin: 5px 0; }
+.cart-foot .btn { width: 100%; margin-top: 12px; }
+.cart-empty { text-align: center; padding: 45px 10px; }
+.cart-empty div { font-size: 44px; }
+dialog {
+  border: 0; border-radius: 14px; padding: 0; width: min(510px,calc(100% - 26px));
+  max-height: 90dvh; overflow-y: auto; box-shadow: 0 15px 70px #0005;
+}
+dialog::backdrop { background: #0008; backdrop-filter: blur(2px); }
+.modal-head { display: flex; justify-content: space-between; align-items: center; background: var(--green); color: white; padding: 15px 20px; }
+.modal-head h2 { margin: 0; }
+.checkout-content { padding: 20px; }
+.checkout-content form { display: grid; gap: 12px; }
+.checkout-summary { background: var(--pale); padding: 12px; border-radius: 8px; font-size: 13px; }
+.checkout-summary p { margin: 3px 0; }
+.toast {
+  position: fixed; bottom: 22px; left: 50%; transform: translate(-50%,20px);
+  background: var(--green); color: white; border-radius: 9px; padding: 12px 20px;
+  z-index: 100; opacity: 0; pointer-events: none; transition: .2s;
+  box-shadow: 0 5px 20px #0003; max-width: 90%; text-align: center;
+}
+.toast.show { opacity: 1; transform: translate(-50%,0); }
+.success-state { text-align: center; padding: 30px 15px; }
+.success-state .check { font-size: 48px; color: var(--green2); }
+body.locked { overflow: hidden; }
+
+@media(max-width:850px) {
+  .nav-links { gap: 18px; }
+  .product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .product-image { height: 180px; }
+  .benefit-grid { grid-template-columns: repeat(2,1fr); gap: 15px 0; }
+  .benefit:nth-child(2) { border-right: 0; }
+  .about-layout { gap: 18px; }
+  .review-grid { grid-template-columns: 1fr; }
+  .review { padding: 12px; }
+}
+@media(max-width:600px) {
+  .nav { min-height: 62px; }
+  .brand strong { font-size: 21px; }
+  .brand-icon { font-size: 29px; }
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none; position: absolute; top: 62px; left: 0; right: 0;
+    padding: 12px 5% 18px; background: var(--green); flex-direction: column;
+    align-items: stretch; gap: 5px; box-shadow: 0 8px 15px #0002;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 0; }
+  .hero { min-height: 350px; background-position: 58% center; }
+  .hero-content { padding: 35px 0; }
+  .hero h1 { font-size: 38px; }
+  .hero p { font-size: 15px; max-width: 310px; }
+  .benefit-grid { padding: 15px 0; }
+  .benefit { justify-content: flex-start; gap: 8px; padding: 0 4px; }
+  .benefit-icon { font-size: 24px; }
+  .benefit strong { font-size: 11px; }
+  .benefit small { font-size: 10px; }
+  .section { padding: 25px 0; }
+  .section-heading h2 { font-size: 26px; }
+  .toolbar { align-items: stretch; }
+  .search-box { max-width: none; }
+  .filters { gap: 6px; }
+  .filter-btn { padding: 7px 10px; font-size: 12px; }
+  .product-grid { gap: 10px; }
+  .product-image { height: 125px; }
+  .product-body { padding: 9px 6px 12px; }
+  .product-body h3 { font-size: 13px; }
+  .product-body p { font-size: 11px; min-height: 32px; }
+  .product-body .btn { padding: 7px 8px; font-size: 11px; }
+  .about-layout, .contact-grid { grid-template-columns: 1fr; }
+  .about-img { height: 210px; }
+  .reviews { padding: 14px; }
+  .review-grid { grid-template-columns: 1fr; }
+  .footer-row { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; }
+}
+</style>
 </head>
-
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Tea Bliss home">
+      <span class="brand-icon">🌿</span>
+      <span><strong>Tea Bliss</strong><small>Good Tea · Good Mood</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-trigger" id="openCart" aria-label="Open shopping cart">
+        🛒<span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
 
-    <header class="navbar">
+<main>
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">FRESH · NATURAL · DELICIOUS</div>
+      <h1>The Perfect Cup<br>of Happiness</h1>
+      <p>Explore our wide range of premium teas, made from the finest leaves.</p>
+      <a class="btn" href="#menu">Shop Now <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
 
-        <a href="#home" class="logo" aria-label="IMASS Home">
-            <span class="logo-icon">🌐</span>
-            <span>BAISAKHI</span>
-        </a>
+<section class="benefits" aria-label="Our benefits">
+  <div class="container benefit-grid">
+    <div class="benefit"><span class="benefit-icon">♧</span><span><strong>100% Natural</strong><small>No artificial flavours</small></span></div>
+    <div class="benefit"><span class="benefit-icon">♧</span><span><strong>Fast Delivery</strong><small>Across India</small></span></div>
+    <div class="benefit"><span class="benefit-icon">♢</span><span><strong>Secure Payment</strong><small>Safe &amp; Trusted</small></span></div>
+    <div class="benefit"><span class="benefit-icon">♡</span><span><strong>Loved by Customers</strong><small>4.8/5 Rating</small></span></div>
+  </div>
+</section>
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Toggle navigation"
-            aria-expanded="false"
-            aria-controls="navLinks"
-        >
-            ☰
-        </button>
-
-        <nav class="nav-links" id="navLinks">
-
-            <a href="#home" class="active">Home</a>
-
-            <a href="#about">About</a>
-
-            <a href="#publication">Publication</a>
-
-            <a href="#downloads">Downloads</a>
-
-            <a href="#contact">Contact</a>
-
-        </nav>
-
-        <div class="nav-actions" id="navActions">
-
-            <a href="#registration" class="nav-btn">
-                📝 Registration
-            </a>
-
-            <a href="#submission" class="nav-btn">
-                📄 Submission
-            </a>
-
-        </div>
-
-    </header>
-
-
-    <!-- =========================
-         ANNOUNCEMENTS
-    ========================== -->
-
-    <div class="announcement">
-
-        <div class="announcement-label">
-            NEWS
-        </div>
-
-        <div class="ticker">
-
-            <div class="ticker-content">
-
-                <span>
-                    📢 Abstract submission is open for IMASS 2026.
-                </span>
-
-                <span>
-                    🌍 Join the 5th International Conference in Bali, Indonesia.
-                </span>
-
-                <span>
-                    📅 Conference dates: December 19–20, 2026.
-                </span>
-
-            </div>
-
-        </div>
-
+<section class="section" id="menu">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Our Special Teas</h2>
+      <div class="leaf-divider">━━━━ 🌿 ━━━━</div>
+      <p>Choose from our most loved and refreshing varieties.</p>
     </div>
 
-
-    <!-- =========================
-         HERO SECTION
-    ========================== -->
-
-    <main>
-
-        <section class="hero" id="home">
-
-            <div class="hero-content">
-
-                <p class="eyebrow">
-                    5th International Conference on
-                </p>
-
-                <h1>
-                    Multidisciplinary Approach
-                    <span>for Sustainable Society</span>
-                </h1>
-
-                <p class="hero-description">
-                    Advancing sustainability through innovative research,
-                    cross-disciplinary collaboration, and solutions for
-                    global environmental challenges.
-                </p>
-
-                <div class="event-details">
-
-                    <div class="detail-item">
-
-                        <span class="detail-icon">▣</span>
-
-                        <span>Hybrid Conference</span>
-
-                    </div>
-
-                    <div class="detail-item">
-
-                        <span class="detail-icon">📍</span>
-
-                        <span>
-                            The Kuta Beach Heritage Hotel,
-                            Bali, Indonesia
-                        </span>
-
-                    </div>
-
-                    <div class="detail-item">
-
-                        <span class="detail-icon">▦</span>
-
-                        <span>
-                            December 19th – 20th, 2026
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="hero-buttons">
-
-                    <a href="#submission" class="btn btn-primary">
-
-                        Submit Your Abstract
-
-                        <span>→</span>
-
-                    </a>
-
-                    <a href="#registration" class="btn btn-secondary">
-
-                        Registration Options
-
-                        <span>→</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ABOUT CONFERENCE
-        ========================== -->
-
-        <section class="section" id="about">
-
-            <div class="section-heading">
-
-                <span class="tag">
-                    About the Conference
-                </span>
-
-                <h2>
-                    Research Today, Sustainable Tomorrow
-                </h2>
-
-                <p>
-                    Bring together researchers, educators, professionals,
-                    and students to exchange ideas and develop practical
-                    solutions for a more sustainable society.
-                </p>
-
-            </div>
-
-            <div class="features">
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        🌱
-                    </div>
-
-                    <h3>
-                        Sustainability
-                    </h3>
-
-                    <p>
-                        Explore innovative approaches to environmental
-                        protection, climate challenges, and sustainable
-                        development.
-                    </p>
-
-                </article>
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        🔬
-                    </div>
-
-                    <h3>
-                        Research & Innovation
-                    </h3>
-
-                    <p>
-                        Present research findings, exchange knowledge,
-                        and discover emerging ideas across disciplines.
-                    </p>
-
-                </article>
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        🌍
-                    </div>
-
-                    <h3>
-                        Global Collaboration
-                    </h3>
-
-                    <p>
-                        Connect with researchers and professionals
-                        working toward solutions to global challenges.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PUBLICATION
-        ========================== -->
-
-        <section class="section" id="publication"
-                 style="background: #f8f8f8;">
-
-            <div class="section-heading">
-
-                <span class="tag">
-                    Publication
-                </span>
-
-                <h2>
-                    Share Your Research
-                </h2>
-
-                <p>
-                    Present your academic work and review the official
-                    conference publication guidelines before submitting
-                    your research paper.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             DOWNLOADS
-        ========================== -->
-
-        <section class="section" id="downloads">
-
-            <div class="section-heading">
-
-                <span class="tag">
-                    Resources
-                </span>
-
-                <h2>
-                    Conference Downloads
-                </h2>
-
-                <p>
-                    Access conference guidelines, abstract templates,
-                    important dates, and other official documents
-                    when they are made available.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             REGISTRATION
-        ========================== -->
-
-        <section class="registration-section"
-                 id="registration">
-
-            <h2>
-                Be Part of IMASS 2026
-            </h2>
-
-            <p>
-                Connect, collaborate, and contribute to a sustainable future.
-            </p>
-
-            <a href="#contact" class="btn">
-                Registration Information →
-            </a>
-
-        </section>
-
-
-        <!-- =========================
-             SUBMISSION
-        ========================== -->
-
-        <section class="section" id="submission">
-
-            <div class="section-heading">
-
-                <span class="tag">
-                    Abstract Submission
-                </span>
-
-                <h2>
-                    Submit Your Abstract
-                </h2>
-
-                <p>
-                    Prepare your abstract according to the official
-                    submission guidelines. Replace this section's
-                    button destination with the conference's actual
-                    submission portal.
-                </p>
-
-                <br>
-
-                <a href="#contact"
-                   class="btn btn-primary"
-                   style="
-                       background: #ed684d;
-                       color: white;
-                   ">
-
-                    Submission Information →
-
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FLOATING CONTACT BUTTONS
-    ========================== -->
-
-    <div class="floating-buttons">
-
-        <!-- Replace the number with the official WhatsApp number.
-             Include country code without + or spaces. -->
-
-        <a
-            href="https://wa.me/0000000000"
-            class="float-btn whatsapp"
-            aria-label="Contact on WhatsApp"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            ☎
-        </a>
-
-        <a
-            href="https://m.me/"
-            class="float-btn messenger"
-            aria-label="Open Messenger"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <span>●</span>
-        </a>
-
+    <div class="toolbar">
+      <input class="search-box" id="searchInput" type="search" placeholder="🔎 Search teas..." aria-label="Search teas">
+      <div class="filters" id="filters" aria-label="Filter by category">
+        <button class="filter-btn selected" data-category="All">All Teas</button>
+        <button class="filter-btn" data-category="Black">Black</button>
+        <button class="filter-btn" data-category="Green">Green</button>
+        <button class="filter-btn" data-category="Masala">Masala</button>
+        <button class="filter-btn" data-category="Herbal">Herbal</button>
+      </div>
+      <label>
+        <span style="position:absolute;clip:rect(0,0,0,0)">Sort products</span>
+        <select id="sortSelect" aria-label="Sort products">
+          <option value="default">Featured</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+      </label>
     </div>
+    <div class="product-grid" id="productGrid" aria-live="polite"></div>
+  </div>
+</section>
 
-
-    <!-- =========================
-         CHAT WIDGET
-    ========================== -->
-
-    <div class="chat-widget">
-
-        <div class="chat-popup" id="chatPopup">
-
-            <h3>
-                We're Here to Help
-            </h3>
-
-            <p>
-                Have questions about registration or abstract submission?
-                Contact the conference organizers.
-            </p>
-
-            <a href="#contact" id="contactLink">
-                Contact Organizers
-            </a>
-
-        </div>
-
-        <button
-            class="chat-button"
-            id="chatButton"
-            aria-expanded="false"
-            aria-controls="chatPopup"
-        >
-
-            <span>We Are Here</span>
-
-            <span class="chat-icon">●</span>
-
-        </button>
-
+<section class="section" id="about">
+  <div class="container about-layout">
+    <img class="about-img" src="https://images.unsplash.com/photo-1563911892437-1feda0179e1b?auto=format&fit=crop&w=900&q=80" alt="Fresh green tea leaves growing on a tea plantation" loading="lazy">
+    <div class="about-copy">
+      <h2>About Us</h2>
+      <p>At Tea Bliss, we believe that a good cup of tea can make your day better. We bring you the finest tea leaves, carefully selected for their quality, taste and freshness.</p>
+      <p>From bold black tea to soothing herbal blends, every cup is an invitation to slow down and enjoy the moment.</p>
+      <a href="#contact" class="btn btn-outline">Learn More →</a>
     </div>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer id="contact">
-
-        <h3>IMASS 2026</h3>
-
-        <p>
-            5th International Conference on
-            Multidisciplinary Approach for Sustainable Society
-        </p>
-
-        <p>
-            December 19–20, 2026 | Bali, Indonesia
-        </p>
-
-        <p>
-            For official registration, submission, and contact details,
-            visit the conference organizer's official website.
-        </p>
-
-        <p class="copyright">
-            © <span id="year">2026</span> IMASS Conference.
-            All rights reserved.
-        </p>
-
-    </footer>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script>
-
-        // MOBILE NAVIGATION
-
-        const menuToggle = document.getElementById("menuToggle");
-
-        const navLinks = document.getElementById("navLinks");
-
-        const navActions = document.getElementById("navActions");
-
-
-        menuToggle.addEventListener("click", function () {
-
-            const isOpen = navLinks.classList.toggle("open");
-
-            navActions.classList.toggle("open", isOpen);
-
-            menuToggle.setAttribute("aria-expanded", isOpen);
-
-            menuToggle.textContent = isOpen ? "✕" : "☰";
-
-        });
-
-
-        // CLOSE MOBILE MENU WHEN A LINK IS CLICKED
-
-        document.querySelectorAll(".nav-links a").forEach(function (link) {
-
-            link.addEventListener("click", function () {
-
-                navLinks.classList.remove("open");
-
-                navActions.classList.remove("open");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-
-                menuToggle.textContent = "☰";
-
-            });
-
-        });
-
-
-        // ACTIVE NAVIGATION LINK
-
-        document.querySelectorAll(".nav-links a").forEach(function (link) {
-
-            link.addEventListener("click", function () {
-
-                document.querySelectorAll(".nav-links a")
-                    .forEach(function (item) {
-
-                        item.classList.remove("active");
-
-                    });
-
-                link.classList.add("active");
-
-            });
-
-        });
-
-
-        // CHAT POPUP
-
-        const chatButton = document.getElementById("chatButton");
-
-        const chatPopup = document.getElementById("chatPopup");
-
-
-        chatButton.addEventListener("click", function () {
-
-            const isOpen = chatPopup.classList.toggle("open");
-
-            chatButton.setAttribute("aria-expanded", isOpen);
-
-        });
-
-
-        // CLOSE CHAT WHEN CONTACT IS SELECTED
-
-        document.getElementById("contactLink")
-            .addEventListener("click", function () {
-
-                chatPopup.classList.remove("open");
-
-                chatButton.setAttribute("aria-expanded", "false");
-
-            });
-
-
-        // CLOSE CHAT WHEN CLICKING OUTSIDE
-
-        document.addEventListener("click", function (event) {
-
-            const clickedInsideChat =
-                chatButton.contains(event.target) ||
-                chatPopup.contains(event.target);
-
-            if (!clickedInsideChat) {
-
-                chatPopup.classList.remove("open");
-
-                chatButton.setAttribute("aria-expanded", "false");
-
-            }
-
-        });
-
-
-        // AUTOMATIC COPYRIGHT YEAR
-
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
-
-
-        // CONSOLE MESSAGE
-
-        console.log(
-            "IMASS 2026 Conference Website Loaded Successfully."
-        );
-
-    </script>
-
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="reviews">
+      <h2>What Our Customers Say</h2>
+      <div class="review-grid">
+        <article class="review"><p>“Best tea I have ever had! The flavor is amazing.”</p><strong>Priya S.</strong><div class="stars" aria-label="5 out of 5 stars">★★★★★</div></article>
+        <article class="review"><p>“Fast delivery and great quality. Highly recommend!”</p><strong>Rahul K.</strong><div class="stars" aria-label="5 out of 5 stars">★★★★★</div></article>
+        <article class="review"><p>“Fresh, natural and so refreshing!”</p><strong>Sneha M.</strong><div class="stars" aria-label="5 out of 5 stars">★★★★★</div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <h2 style="color:var(--green)">Let's Talk Tea ☕</h2>
+      <p>Questions about our blends or your order? We'd love to hear from you.</p>
+      <p><strong>Email:</strong> hello@teabliss.example</p>
+      <p><strong>Hours:</strong> Monday–Saturday, 9 AM–6 PM</p>
+      <h3>Stay in the loop</h3>
+      <form id="newsletterForm" class="contact-form">
+        <label class="field-label">Email address
+          <input type="email" id="newsletterEmail" placeholder="you@example.com" required>
+        </label>
+        <button class="btn btn-green" type="submit">Subscribe to Newsletter</button>
+      </form>
+    </div>
+    <div>
+      <h2 style="color:var(--green)">Contact Us</h2>
+      <form id="contactForm" class="contact-form">
+        <label class="field-label">Your name
+          <input id="contactName" name="name" required minlength="2" placeholder="Your name">
+        </label>
+        <label class="field-label">Email address
+          <input id="contactEmail" name="email" type="email" required placeholder="you@example.com">
+        </label>
+        <label class="field-label">Message
+          <textarea id="contactMessage" name="message" required minlength="5" placeholder="How can we help?"></textarea>
+        </label>
+        <button class="btn btn-green" type="submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <a class="brand" href="#home"><span class="brand-icon">🌿</span><span><strong>Tea Bliss</strong><small>Good Tea · Good Mood</small></span></a>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#home">Home</a><a href="#menu">Menu</a><a href="#about">About</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="socials" aria-label="Social links">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+        <a href="https://www.x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">X</a>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Tea Bliss. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart" aria-hidden="true">
+  <div class="drawer-head"><h2>Your Shopping Cart</h2><button class="close-btn" id="closeCart" aria-label="Close cart">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot" id="cartFoot"></div>
+</aside>
+
+<dialog id="checkoutDialog">
+  <div class="modal-head"><h2>Checkout</h2><button class="close-btn" id="closeCheckout" aria-label="Close checkout">×</button></div>
+  <div class="checkout-content" id="checkoutContent"></div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+const products = [
+  {
+    id: "black", name: "Classic Black Tea", category: "Black", price: 80,
+    description: "Rich taste, strong aroma.",
+    image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id: "green", name: "Green Tea", category: "Green", price: 90,
+    description: "Fresh, healthy, natural.",
+    image: "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id: "masala", name: "Masala Tea", category: "Masala", price: 70,
+    description: "Traditional taste with spices.",
+    image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id: "herbal", name: "Herbal Tea", category: "Herbal", price: 90,
+    description: "Calm mind, better health.",
+    image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=700&q=80"
+  }
+];
+
+const money = amount => new Intl.NumberFormat("en-IN", {
+  style: "currency", currency: "INR", maximumFractionDigits: 2
+}).format(amount);
+
+const $ = selector => document.querySelector(selector);
+const productGrid = $("#productGrid");
+const cartDrawer = $("#cartDrawer");
+const overlay = $("#overlay");
+const checkoutDialog = $("#checkoutDialog");
+
+let activeCategory = "All";
+let cart = loadCart();
+let lastFocused = null;
+let toastTimer;
+
+function loadCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("teaBlissCart") || "{}");
+    const clean = {};
+    for (const product of products) {
+      const qty = Number(saved[product.id]);
+      if (Number.isInteger(qty) && qty > 0 && qty <= 99) clean[product.id] = qty;
+    }
+    return clean;
+  } catch {
+    return {};
+  }
+}
+
+function saveCart() {
+  try {
+    localStorage.setItem("teaBlissCart", JSON.stringify(cart));
+  } catch {
+    // The cart remains usable for this session if storage is unavailable.
+  }
+}
+
+function showToast(message) {
+  const toast = $("#toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+}
+
+function getCartCount() {
+  return Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+}
+
+function getSubtotal() {
+  return products.reduce((sum, p) => sum + p.price * (cart[p.id] || 0), 0);
+}
+
+function renderProducts() {
+  const query = $("#searchInput").value.trim().toLowerCase();
+  const sort = $("#sortSelect").value;
+  let list = products.filter(p =>
+    (activeCategory === "All" || p.category === activeCategory) &&
+    (p.name.toLowerCase().includes(query) ||
+     p.description.toLowerCase().includes(query) ||
+     p.category.toLowerCase().includes(query))
+  );
+
+  if (sort === "low") list.sort((a, b) => a.price - b.price);
+  if (sort === "high") list.sort((a, b) => b.price - a.price);
+  if (sort === "name") list.sort((a, b) => a.name.localeCompare(b.name));
+
+  productGrid.replaceChildren();
+
+  if (!list.length) {
+    const empty = document.createElement("p");
+    empty.className = "no-results";
+    empty.textContent = "No teas found. Try another search or category.";
+    productGrid.append(empty);
+    return;
+  }
+
+  list.forEach(p => {
+    const card = document.createElement("article");
+    card.className = "product-card";
+
+    const img = document.createElement("img");
+    img.className = "product-image";
+    img.src = p.image;
+    img.alt = p.name;
+    img.loading = "lazy";
+    img.onerror = () => {
+      img.style.background = "#e5e6d7";
+      img.removeAttribute("src");
+      img.alt = p.name + " image unavailable";
+    };
+
+    const body = document.createElement("div");
+    body.className = "product-body";
+
+    const title = document.createElement("h3");
+    title.textContent = p.name;
+    const desc = document.createElement("p");
+    desc.textContent = p.description;
+    const price = document.createElement("div");
+    price.className = "price";
+    price.textContent = money(p.price) + " / cup";
+    const add = document.createElement("button");
+    add.className = "btn btn-green";
+    add.textContent = cart[p.id] ? `Add More (${cart[p.id]} in cart)` : "Add to Cart";
+    add.type = "button";
+    add.addEventListener("click", () => addToCart(p.id));
+
+    body.append(title, desc, price, add);
+    card.append(img, body);
+    productGrid.append(card);
+  });
+}
+
+function addToCart(id) {
+  if (!products.some(p => p.id === id)) return;
+  if ((cart[id] || 0) >= 99) {
+    showToast("Maximum 99 cups per tea.");
+    return;
+  }
+  cart[id] = (cart[id] || 0) + 1;
+  saveCart();
+  renderCart();
+  renderProducts();
+  showToast(products.find(p => p.id === id).name + " added to cart!");
+}
+
+function changeQuantity(id, delta) {
+  if (!products.some(p => p.id === id)) return;
+  const next = (cart[id] || 0) + delta;
+  if (next <= 0) delete cart[id];
+  else if (next <= 99) cart[id] = next;
+  saveCart();
+  renderCart();
+  renderProducts();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  saveCart();
+  renderCart();
+  renderProducts();
+  showToast("Item removed from cart.");
+}
+
+function renderCart() {
+  $("#cartCount").textContent = getCartCount();
+  $("#cartCount").setAttribute("aria-label", `${getCartCount()} items in cart`);
+
+  const items = $("#cartItems");
+  items.replaceChildren();
+
+  const selected = products.filter(p => cart[p.id]);
+  if (!selected.length) {
+    const empty = document.createElement("div");
+    empty.className = "cart-empty";
+    empty.innerHTML = "<div>🛒</div><h3>Your cart is empty</h3><p>Find your perfect cup of tea.</p>";
+    const shop = document.createElement("button");
+    shop.className = "btn btn-green";
+    shop.textContent = "Explore Teas";
+    shop.addEventListener("click", () => {
+      closeCart();
+      $("#menu").scrollIntoView({ behavior: "smooth" });
+    });
+    empty.append(shop);
+    items.append(empty);
+    $("#cartFoot").replaceChildren();
+    return;
+  }
+
+  selected.forEach(p => {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+    const img = document.createElement("img");
+    img.src = p.image;
+    img.alt = "";
+    img.onerror = () => img.removeAttribute("src");
+
+    const details = document.createElement("div");
+    const name = document.createElement("h3");
+    name.textContent = p.name;
+    const price = document.createElement("p");
+    price.textContent = money(p.price * cart[p.id]);
+
+    const controls = document.createElement("div");
+    controls.className = "qty-controls";
+
+    const minus = document.createElement("button");
+    minus.textContent = "−";
+    minus.setAttribute("aria-label", "Decrease " + p.name);
+    minus.addEventListener("click", () => changeQuantity(p.id, -1));
+
+    const qty = document.createElement("span");
+    qty.textContent = cart[p.id];
+    qty.setAttribute("aria-label", "Quantity " + cart[p.id]);
+
+    const plus = document.createElement("button");
+    plus.textContent = "+";
+    plus.setAttribute("aria-label", "Increase " + p.name);
+    plus.disabled = cart[p.id] >= 99;
+    plus.addEventListener("click", () => changeQuantity(p.id, 1));
+
+    controls.append(minus, qty, plus);
+    details.append(name, price, controls);
+
+    const remove = document.createElement("button");
+    remove.className = "remove-item";
+    remove.textContent = "Remove";
+    remove.setAttribute("aria-label", "Remove " + p.name);
+    remove.addEventListener("click", () => removeFromCart(p.id));
+
+    row.append(img, details, remove);
+    items.append(row);
+  });
+
+  const subtotal = getSubtotal();
+  const foot = $("#cartFoot");
+  foot.replaceChildren();
+
+  const sub = document.createElement("div");
+  sub.className = "total-row";
+  sub.innerHTML = "<span>Subtotal</span>";
+  const subValue = document.createElement("strong");
+  subValue.textContent = money(subtotal);
+  sub.append(subValue);
+
+  const shipping = document.createElement("div");
+  shipping.className = "total-row";
+  const shippingLabel = document.createElement("span");
+  shippingLabel.textContent = subtotal >= 299 ? "Delivery" : "Estimated delivery";
+  const shippingValue = document.createElement("span");
+  shippingValue.textContent = subtotal >= 299 ? "FREE" : money(30);
+  shipping.append(shippingLabel, shippingValue);
+
+  const total = document.createElement("div");
+  total.className = "total-row";
+  const totalLabel = document.createElement("strong");
+  totalLabel.textContent = "Total";
+  const totalValue = document.createElement("strong");
+  totalValue.textContent = money(subtotal + (subtotal >= 299 ? 0 : 30));
+  total.append(totalLabel, totalValue);
+
+  const checkout = document.createElement("button");
+  checkout.className = "btn btn-green";
+  checkout.textContent = "Proceed to Checkout →";
+  checkout.addEventListener("click", openCheckout);
+
+  foot.append(sub, shipping, total, checkout);
+}
+
+function openCart() {
+  lastFocused = document.activeElement;
+  cartDrawer.classList.add("open");
+  overlay.classList.add("open");
+  cartDrawer.setAttribute("aria-hidden", "false");
+  document.body.classList.add("locked");
+  $("#closeCart").focus();
+}
+
+function closeCart() {
+  cartDrawer.classList.remove("open");
+  overlay.classList.remove("open");
+  cartDrawer.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("locked");
+  if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+}
+
+function openCheckout() {
+  if (!getCartCount()) {
+    showToast("Add a tea to your cart first.");
+    return;
+  }
+  closeCart();
+  renderCheckoutForm();
+  if (typeof checkoutDialog.showModal === "function") checkoutDialog.showModal();
+  else showToast("Your browser does not support the checkout dialog.");
+}
+
+function renderCheckoutForm() {
+  const content = $("#checkoutContent");
+  content.replaceChildren();
+
+  const summary = document.createElement("div");
+  summary.className = "checkout-summary";
+  const subtotal = getSubtotal();
+  const delivery = subtotal >= 299 ? 0 : 30;
+  summary.innerHTML = "<strong>Order summary</strong>";
+
+  products.filter(p => cart[p.id]).forEach(p => {
+    const line = document.createElement("p");
+    line.textContent = `${p.name} × ${cart[p.id]} — ${money(p.price * cart[p.id])}`;
+    summary.append(line);
+  });
+
+  const finalLine = document.createElement("p");
+  finalLine.innerHTML = `<strong>Total: ${money(subtotal + delivery)}</strong>`;
+  summary.append(finalLine);
+
+  const form = document.createElement("form");
+  form.id = "checkoutForm";
+  form.innerHTML = `
+    <label class="field-label">Full name
+      <input name="fullName" autocomplete="name" required minlength="2" placeholder="Your full name">
+    </label>
+    <label class="field-label">Email address
+      <input name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+    </label>
+    <label class="field-label">Phone number
+      <input name="phone" type="tel" autocomplete="tel" required pattern="[0-9+()\\- ]{7,18}" placeholder="Your phone number">
+    </label>
+    <label class="field-label">Delivery address
+      <textarea name="address" autocomplete="street-address" required minlength="8" placeholder="House, street, city, PIN code"></textarea>
+    </label>
+    <label class="field-label">Payment method
+      <select name="payment" required>
+        <option value="cod">Cash on Delivery (Demo)</option>
+        <option value="online">Online Payment (Demo)</option>
+      </select>
+    </label>
+    <p style="font-size:12px;color:#62675f">Demo checkout only. No payment will be charged and no order is sent to a server.</p>
+    <button class="btn btn-green" type="submit">Place Demo Order</button>
+  `;
+  form.addEventListener("submit", placeOrder);
+  content.append(summary, form);
+}
+
+function placeOrder(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+  if (!getCartCount()) {
+    checkoutDialog.close();
+    showToast("Your cart is empty.");
+    return;
+  }
+
+  const formData = new FormData(form);
+  const order = {
+    number: "TB" + Date.now().toString().slice(-8),
+    name: String(formData.get("fullName")).trim(),
+    total: getSubtotal() + (getSubtotal() >= 299 ? 0 : 30),
+    createdAt: new Date().toISOString()
+  };
+
+  // This is a local demonstration, not a real order submission.
+  try {
+    const previous = JSON.parse(localStorage.getItem("teaBlissDemoOrders") || "[]");
+    const safePrevious = Array.isArray(previous) ? previous : [];
+    safePrevious.push(order);
+    localStorage.setItem("teaBlissDemoOrders", JSON.stringify(safePrevious.slice(-10)));
+  } catch {}
+
+  cart = {};
+  saveCart();
+  renderCart();
+  renderProducts();
+
+  const content = $("#checkoutContent");
+  content.replaceChildren();
+  const success = document.createElement("div");
+  success.className = "success-state";
+
+  const icon = document.createElement("div");
+  icon.className = "check";
+  icon.textContent = "✓";
+
+  const title = document.createElement("h2");
+  title.textContent = "Thank you, " + order.name + "!";
+
+  const message = document.createElement("p");
+  message.textContent = "Your demo order has been created successfully.";
+
+  const orderNumber = document.createElement("p");
+  orderNumber.textContent = "Demo order number: " + order.number;
+
+  const amount = document.createElement("p");
+  amount.textContent = "Order total: " + money(order.total);
+
+  const note = document.createElement("p");
+  note.style.fontSize = "12px";
+  note.textContent = "This confirmation is local to this demo website. No real order has been placed.";
+
+  const done = document.createElement("button");
+  done.className = "btn btn-green";
+  done.textContent = "Continue Shopping";
+  done.addEventListener("click", () => {
+    checkoutDialog.close();
+    $("#menu").scrollIntoView({ behavior: "smooth" });
+    showToast("Thanks for trying Tea Bliss!");
+  });
+
+  success.append(icon, title, message, orderNumber, amount, note, done);
+  content.append(success);
+}
+
+$("#openCart").addEventListener("click", openCart);
+$("#closeCart").addEventListener("click", closeCart);
+overlay.addEventListener("click", closeCart);
+$("#closeCheckout").addEventListener("click", () => checkoutDialog.close());
+
+checkoutDialog.addEventListener("click", event => {
+  if (event.target === checkoutDialog) checkoutDialog.close();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && cartDrawer.classList.contains("open")) closeCart();
+});
+
+$("#menuToggle").addEventListener("click", () => {
+  const nav = $("#navLinks");
+  const expanded = nav.classList.toggle("open");
+  $("#menuToggle").setAttribute("aria-expanded", String(expanded));
+  $("#menuToggle").textContent = expanded ? "✕" : "☰";
+});
+
+$("#navLinks").addEventListener("click", event => {
+  if (event.target.closest("a")) {
+    $("#navLinks").classList.remove("open");
+    $("#menuToggle").setAttribute("aria-expanded", "false");
+    $("#menuToggle").textContent = "☰";
+  }
+});
+
+$("#filters").addEventListener("click", event => {
+  const button = event.target.closest("[data-category]");
+  if (!button) return;
+  activeCategory = button.dataset.category;
+  $("#filters").querySelectorAll("button").forEach(b => {
+    const selected = b === button;
+    b.classList.toggle("selected", selected);
+    b.setAttribute("aria-pressed", String(selected));
+  });
+  renderProducts();
+});
+
+$("#searchInput").addEventListener("input", renderProducts);
+$("#sortSelect").addEventListener("change", renderProducts);
+
+$("#contactForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+  // Frontend-only demo: a backend/email service is required for actual delivery.
+  form.reset();
+  showToast("Message validated! Connect a backend to send it.");
+});
+
+$("#newsletterForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+
+  const email = $("#newsletterEmail").value.trim().toLowerCase();
+  try {
+    const saved = JSON.parse(localStorage.getItem("teaBlissSubscribers") || "[]");
+    const subscribers = Array.isArray(saved) ? saved : [];
+    if (subscribers.includes(email)) {
+      showToast("You're already on our demo newsletter list!");
+      return;
+    }
+    subscribers.push(email);
+    localStorage.setItem("teaBlissSubscribers", JSON.stringify(subscribers));
+  } catch {
+    showToast("Email validated! Newsletter storage is unavailable.");
+    return;
+  }
+  form.reset();
+  showToast("Thanks for subscribing to Tea Bliss!");
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", () => {
+    const target = document.querySelector(link.getAttribute("href"));
+    if (!target) return;
+    document.querySelectorAll(".nav-links a").forEach(navLink => {
+      navLink.classList.toggle("active", navLink.getAttribute("href") === link.getAttribute("href"));
+    });
+  });
+});
+
+$("#year").textContent = new Date().getFullYear();
+renderProducts();
+renderCart();
+</script>
 </body>
 </html>
